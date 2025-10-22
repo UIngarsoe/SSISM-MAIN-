@@ -1,9 +1,10 @@
 # SSISM_Training_Model_V15.py
 # SSISM Training Model: Transcendent Social Dynamics (V15)
 # Author: Adapted from collaboration with Grok (xAI)
-# Date: October 22, 2025, 05:53 PM +07
+# Date: October 22, 2025, 06:02 PM +07
 # Description: A training model for the SS'ISM framework, focusing on transcending conventional prediction
 #              through ethical wisdom, present-minded focus, and adaptive receptivity to enhance Social Capital Gain (SCG).
+# Update: Fixed duplicated main block and added visualization; last revised 06:02 PM +07, Oct 22, 2025.
 
 """
 Overview
