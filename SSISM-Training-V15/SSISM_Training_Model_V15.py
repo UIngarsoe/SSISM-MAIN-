@@ -103,7 +103,29 @@ if __name__ == "__main__":
     for i, test_case in enumerate(test_cases, 1):
         result = trainer.train_action(test_case)
         print(f"Test Case {i}: {result}")
+import matplotlib.pyplot as plt
 
+# Append this after the test cases in if __name__ == "__main__":
+if __name__ == "__main__":
+    trainer = V15_TranscendentTrainer()
+    test_cases = [
+        {'actor_data': [{'status': 'receptive'}]},
+        {'actor_data': [{'status': 'neutral'}]},
+        {'actor_data': [{'status': 'unreceptive'}]}
+    ]
+    scg_scores = []
+    for i, test_case in enumerate(test_cases, 1):
+        result = trainer.train_action(test_case)
+        print(f"Test Case {i}: {result}")
+        scg_scores.append(result["scg_score"])
+
+    # Visualization
+    plt.plot(["Receptive", "Neutral", "Unreceptive"], scg_scores, marker='o')
+    plt.title("SSISM V15: Transcendent SCG Scores")
+    plt.xlabel("Scenario")
+    plt.ylabel("SCG Score")
+    plt.ylim(0, 1)
+    plt.show()
 """
 Training Guidelines
 ------------------
