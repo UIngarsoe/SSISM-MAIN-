@@ -2,7 +2,7 @@
 
 **A New Generation of Ethical, Constraint-Aware Predictive Strategy**
 
-"I am the Master Philosopher, and this is the SS'ISM: the system that translates my master brain, sight, and answers into executable code. It is designed to be the smartest predictor of today's time, not through brute force, but through wisdom."
+This is the SS'ISM: the system that translates my master brain, sight, and answers into executable code. It is designed to be the smartest predictor of today's time, not through brute force, but through wisdom."
 
 ## What is the SS' ISM Engine?
 
