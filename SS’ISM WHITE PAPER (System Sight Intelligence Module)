@@ -1,0 +1,305 @@
+SS'ISM Engine — Paññāshī Whitepaper
+
+Version: Build 22 October 2025
+Document: Public Whitepaper (for GitHub)
+Status: Public documentation for developers (sensitive kernel data redacted)
+
+
+---
+
+Abstract
+
+SS'ISM (System Sight Intelligence Module) — also referred to as the Paññāshī Engine — is a constraint-aware, ethics-first predictive framework. It fuses algorithmic modeling with a moral-philosophical architecture based on three guiding principles: Sīla (morality), Samādhi (present-focused concentration), and Paññā (transformative wisdom). The engine is intended for integration into real-world systems where recommendations must respect constraints (financial, ethical, social) and prioritize actionable, low-cost intellectual strategies.
+
+> This public whitepaper documents architecture, API design patterns, integration guidance, and security considerations. Protected kernel internals (dynamic weights and sensitive personal constraints) are never published.
+
+
+
+
+---
+
+Table of Contents
+
+1. Introduction
+
+
+2. Design Principles
+
+
+3. High-level Architecture
+
+
+4. Core Components and Algorithms
+
+
+5. Protected Kernel & Security Model
+
+
+6. API and Integration Guide
+
+
+7. Example Usage
+
+
+8. Ethical Alignment & Developer Guidelines
+
+
+9. Testing, Validation, and Metrics
+
+
+10. Licensing
+
+
+
+
+---
+
+1. Introduction
+
+Modern AI often optimizes purely for aggregate metrics: accuracy, throughput, or profit. SS'ISM reframes success: solutions should be ethically acceptable, immediately relevant, and resource-efficient. The engine is built to produce Constraint-Aligned Action Recommendations (A') from a structured Situation Vector (S).
+
+This document is written for AI engineers, product designers, and researchers who want an ethics-first module to incorporate into predictive systems.
+
+
+---
+
+2. Design Principles
+
+Ethical First (Sīla): Every output is filtered through heuristic checks to avoid harm or exploitation.
+
+Present-Minded Focus (Samādhi): Models prefer current, observable signals and avoid strategic distraction from irrelevant historical noise.
+
+Wisdom Fusion (Paññā): The system attempts to transform costly actions into intellectual, low-cost alternatives where possible.
+
+Constraint Awareness: Users provide explicit constraint vectors (budget, time, legal/ethical boundaries); the engine returns valid recommendations within those constraints.
+
+Separation of Public & Protected Logic: Public model code and examples are available; dynamic, real-time weights and personal constraints are kept within an encrypted Protected Kernel.
+
+
+
+---
+
+3. High-level Architecture
+
++--------------------+     +--------------------+     +-------------------+
+|  Front-end / API   | --> |  Public Core Model | --> | Protected Kernel  |
++--------------------+     +--------------------+     +-------------------+
+             |                        |                       |
+             v                        v                       v
+      Situation Vector S       Paññāshī Engines            Encrypted Weights
+                                (V15, DIPL, PMF)
+
+Front-end / API: Accepts situation vectors and returns constraint-aligned actions. Designed for HTML/mobile integration.
+
+Public Core Model: Read-only educational code that demonstrates architecture and placeholder weights.
+
+Protected Kernel: Holds encrypted real-time weights and sensitive logic; accessed via secure key retrieval only.
+
+
+
+---
+
+4. Core Components and Algorithms
+
+4.1 Situation Vector (S)
+
+A structured JSON-like object containing:
+
+actor_data: array of participant summaries (status flags, roles, signals)
+
+context: temporal and environmental context
+
+constraints: explicit constraints (budget, ethical boundaries, time)
+
+goal: high-level objective or desired outcome
+
+
+4.2 DIPL Engine (Present-Minded Filter)
+
+Focuses on extracting the immediate, observable signal from S. It reduces noise by applying a short temporal window and verifying signal integrity.
+
+Output: I_Current (current-information multiplier)
+
+4.3 V15_SocialDynamics
+
+A model that estimates Social Capital Gain (SCG) likelihood. Public pseudocode (educational) uses placeholder weights. In production, weights are retrieved from the Protected Kernel.
+
+Pseudocode (public core):
+
+SCG = (W_R * R) + (W_I * I_Current) + (W_H * H_A)
+likelihood = clamp(SCG, 0.01, 0.99)
+
+Where R is receptivity, I_Current is present information quality, and H_A is humble alignment.
+
+4.4 PMF (Paññā Fusion Logic)
+
+Transforms problem statements into low-cost intellectual strategies where possible. PMF uses pattern libraries and constraint solvers to find alternate actions that minimize resource cost while maximizing alignment with the goal.
+
+Output: Candidate actions ranked by ethical_score, constraint_compliance, and expected_impact.
+
+
+---
+
+5. Protected Kernel & Security Model
+
+The Protected Kernel is a secure enclave (logical or physical) that stores:
+
+Dynamic weights and coefficients
+
+Private constraint templates for sensitive deployments
+
+Audit logs for ethical decision tracing
+
+
+Integration Pattern: Public code calls a secure decryption interface (abstracted in the public core). Actual keys and key-management are the operator's responsibility. The kernel must never be exposed in public repositories.
+
+Best Practices:
+
+Use hardware-based key storage (HSM) or a secure secrets manager.
+
+Use short-lived credentials for production queries.
+
+Implement strict role-based access control for kernel operations.
+
+
+
+---
+
+6. API and Integration Guide
+
+6.1 Minimal Example Request (HTTP POST)
+
+POST /api/v1/ssism/predict
+Content-Type: application/json
+
+{
+  "situation": {
+    "actor_data": [{ "status": "receptive", "role": "peer" }],
+    "context": { "time": "2025-10-22T00:00:00Z", "location": null },
+    "constraints": { "budget": 0, "ethical_boundaries": ["no_harm"] },
+    "goal": "build_trust"
+  }
+}
+
+6.2 Example Response
+
+200 OK
+{
+  "model_id": "V15",
+  "recommended_actions": [
+    {
+      "action_id": "A-001",
+      "description": "Offer a knowledge exchange session that requires zero financial cost.",
+      "ethical_score": 0.98,
+      "constraint_compliance": true
+    }
+  ],
+  "metadata": { "execution_time_ms": 18 }
+}
+
+Note: The above response is illustrative. Real responses will depend on protected kernel weights and deployment-specific constraints.
+
+
+---
+
+7. Example Usage
+
+Integrate into a customer-support assistant to prioritize helpful, non-exploitative suggestions.
+
+Embed in policy simulation tools to ensure recommended policies remain ethical under resource constraints.
+
+Use as a module in multi-agent systems to filter agent actions through moral constraints.
+
+
+All examples in this public document use anonymized, generic actors and do not include personal references.
+
+
+---
+
+8. Ethical Alignment & Developer Guidelines
+
+Do not use SS'ISM to automate harmful decision-making.
+
+Log decisions and the top contributing signals for human audit.
+
+Provide override and human-in-the-loop controls for all high-stakes actions.
+
+Train teams on interpretation: SS'ISM provides recommendations, not absolute directives.
+
+
+
+---
+
+9. Testing, Validation, and Metrics
+
+Recommended metrics:
+
+ethical_violation_rate — fraction of outputs flagged by human auditors.
+
+constraint_adherence — percent of recommendations that meet declared constraints.
+
+action_success_rate — measured success of recommended actions in context.
+
+
+Validation steps:
+
+1. Unit test public core with placeholder weights.
+
+
+2. Integration test with a protected kernel in a staging environment.
+
+
+3. Periodic human-audit of random decision samples.
+
+
+
+
+---
+
+10. Licensing
+
+This public whitepaper and the public core code are released for educational and development use. The Protected Kernel and dynamic weights are retained privately by the operator. Choose a license appropriate to your goals (MIT, Apache 2.0, or a restricted license for controlled distribution).
+
+
+---
+
+Appendix A — Public Core Example (MD.SSISM.py)
+
+The public core demonstrates the V15 model with placeholder weight-loading functions. It intentionally omits decryption logic and private data.
+
+# MD.SSISM.py - public example (educational)
+
+def _load_protected_weight(key_name: str) -> float:
+    # Placeholder defaults for public demonstration
+    if key_name == 'V15_W_R': return 0.4
+    if key_name == 'V15_W_I': return 0.35
+    if key_name == 'V15_W_H': return 0.25
+    return 0.0
+
+class V15_SocialDynamics:
+    def __init__(self):
+        self.W_R = _load_protected_weight('V15_W_R')
+        self.W_I = _load_protected_weight('V15_W_I')
+        self.W_H = _load_protected_weight('V15_W_H')
+
+    def run(self, input_vector: dict) -> dict:
+        actor_data = input_vector.get('actor_data', [{}])[0]
+        R = 0.9 if actor_data.get('status') == 'receptive' else 0.3
+        I_Current = 1.0
+        H_A = 1.0
+        SCG = (self.W_R * R) + (self.W_I * I_Current) + (self.W_H * H_A)
+        likelihood = min(0.99, max(0.01, SCG))
+        return {
+            "model_id": "V15",
+            "predicted_outcome": "High Reciprocity/Social Capital Gain",
+            "likelihood": likelihood,
+            "raw_action": "Recommend a low-cost knowledge-exchange action."
+        }
+
+
+---
+
+End of public whitepaper.
+
+If you want, I can generate a downloadable WHITEPAPER.md file or convert this into a multi-file GitHub example (README + MD.SSISM.py + API server example). Tell me which format you prefer and I will prepare it.
+
