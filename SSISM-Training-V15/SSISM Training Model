@@ -1,0 +1,34 @@
+class V15_TranscendentTrainer:
+    def __init__(self):
+        self.W_R = 0.4  # Receptivity weight (adjustable)
+        self.W_I = 0.35  # Current info weight
+        self.W_H = 0.25  # Humble alignment weight
+
+    def update_weights(self, receptivity_signal):
+        """Adjust weights based on real-time receptivity."""
+        if receptivity_signal > 0.7:  # High receptivity
+            self.W_R = min(0.5, self.W_R + 0.1)
+        return self.W_R, self.W_I, self.W_H
+
+    def calculate_scg(self, R, I=1.0, H=1.0):
+        """Compute Social Capital Gain score."""
+        SCG = (self.W_R * R) + (self.W_I * I) + (self.W_H * H)
+        return min(0.99, max(0.01, SCG))
+
+    def train_action(self, input_vector):
+        """Generate a transcendent action recommendation."""
+        actor_data = input_vector.get('actor_data', [{}])[0]
+        R = 0.9 if actor_data.get('status') == 'receptive' else 0.3
+        self.update_weights(R)
+        scg_score = self.calculate_scg(R)
+        return {
+            "model_id": "V15_Transcendent",
+            "scg_score": scg_score,
+            "action": "Propose a mutual benefit plan" if scg_score > 0.7 else "Observe and build rapport"
+        }
+
+# Example usage
+trainer = V15_TranscendentTrainer()
+input_vector = {'actor_data': [{'status': 'receptive'}]}
+result = trainer.train_action(input_vector)
+print(result)
