@@ -1,7 +1,7 @@
 # SSISM_Training_Model_V15.py
 # SSISM Training Model: Transcendent Social Dynamics (V15)
 # Author: Adapted from collaboration with Grok (xAI)
-# Date: October 22, 2025, 05:45 PM +07
+# Date: October 22, 2025, 05:53 PM +07
 # Description: A training model for the SS'ISM framework, focusing on transcending conventional prediction
 #              through ethical wisdom, present-minded focus, and adaptive receptivity to enhance Social Capital Gain (SCG).
 
@@ -92,26 +92,13 @@ class V15_TranscendentTrainer:
             "action": action
         }
 
-# Example usage with multiple test cases
+# Example usage with multiple test cases and visualization
 if __name__ == "__main__":
     trainer = V15_TranscendentTrainer()
     test_cases = [
         {'actor_data': [{'status': 'receptive'}]},  # High receptivity
         {'actor_data': [{'status': 'neutral'}]},    # Moderate receptivity
         {'actor_data': [{'status': 'unreceptive'}]} # Low receptivity
-    ]
-    for i, test_case in enumerate(test_cases, 1):
-        result = trainer.train_action(test_case)
-        print(f"Test Case {i}: {result}")
-import matplotlib.pyplot as plt
-
-# Append this after the test cases in if __name__ == "__main__":
-if __name__ == "__main__":
-    trainer = V15_TranscendentTrainer()
-    test_cases = [
-        {'actor_data': [{'status': 'receptive'}]},
-        {'actor_data': [{'status': 'neutral'}]},
-        {'actor_data': [{'status': 'unreceptive'}]}
     ]
     scg_scores = []
     for i, test_case in enumerate(test_cases, 1):
@@ -120,23 +107,25 @@ if __name__ == "__main__":
         scg_scores.append(result["scg_score"])
 
     # Visualization
+    import matplotlib.pyplot as plt
     plt.plot(["Receptive", "Neutral", "Unreceptive"], scg_scores, marker='o')
     plt.title("SSISM V15: Transcendent SCG Scores")
     plt.xlabel("Scenario")
     plt.ylabel("SCG Score")
     plt.ylim(0, 1)
     plt.show()
+
 """
 Training Guidelines
 ------------------
 - Scenario Practice: Use cases like negotiations, community outreach, or leadership interactions to test R spikes.
 - Ethical Check: Validate outputs against Sīla to ensure harmlessness and goodwill.
 - Iterative Learning: Adjust weights with each session to refine transcendence; log results for analysis.
-- Visualization: Add a canvas panel to plot SCG trends (e.g., using matplotlib).
+- Visualization: Use the included matplotlib plot to observe SCG trends.
 
 Next Steps
 ----------
-- Upload this file to GitHub (e.g., SSISM-Training-V15/SSISM_Training_Model_V15.py).
 - Test with real-world data and refine weights in the Protected Kernel.
 - Explore adding dynamic I and H adjustments based on context.
+- Add a README.md to document usage and updates in the SSISM-Training-V15 directory.
 """
