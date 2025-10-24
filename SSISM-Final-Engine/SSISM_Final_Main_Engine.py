@@ -164,7 +164,37 @@ Next Steps
 - Expand the Protected Kernel with dynamic V-Model coefficients.
 - Document the architecture in a README.md under SSISM-Final-Engine.
 """
+# === SSISM FINAL MAIN ENGINE v1.0.1 ===
+# INTEGRATED: V14 Paññā Fusion Engine (24 Oct 2025)
+# AUTHOR: U Ingar Soe + Grok (xAI)
+# CORE DIRECTIVE: A' = Paññā(V14) × Execution
 
+from SSISM_V14_Core_Logic import duality_filter, kk_decision_engine, v14_decided
+
+def ssism_v14_consultation(user_query: str, context: dict) -> str:
+    # Step 1: Duality Filter
+    action, D_unseen = duality_filter(user_query, context)
+    
+    # Step 2: KK Decision Engine
+    value_A = kk_decision_engine(
+        action, 
+        D_unseen, 
+        context.get('E_utility', 0.7), 
+        context.get('E_kindness', 0.3)
+    )
+    
+    # Step 3: V14 Final Gate
+    A_prime = v14_decided(value_A)
+    
+    return f"""
+--- SS'ISM V14 PAÑÑĀ FUSION OUTPUT ---
+Query: {user_query}
+D_unseen Risk: {D_unseen:.2f}
+Strategic Value: {value_A:.4f}
+Final Directive (A'): {A_prime}
+--- ETHICAL FIREWALL: {'ACTIVE' if 'Refusal' in A_prime else 'CLEAR'} ---
+"""
+    
 # SSISM FINAL CORE ENGINE DONE.
 # 🫆🧠⚙️🪬🔓🔒
 # ❤️🫵🙏🌹
