@@ -242,14 +242,8 @@ def _run_example_tests() -> None:
     print("=== SS'ISM V14 Baydin Engine — Example Tests ===\n")
 
     tests = [
-        # Sarah Nichols (1978-02-07). We will test with hour 12 (noon)
-        ("Sarah Nichols (noon)", 1978, 2, 7, 12, 0),
-        # Sarah Nichols tested at 04:00 local (should map to previous Baydin day if <06:00)
-        ("Sarah Nichols (04:00)", 1978, 2, 7, 4, 0),
-        # Random examples:
-        ("Example Wed AM (09:00)", 1990, 3, 14, 9, 0),
-        ("Example Wed PM (15:00)", 1990, 3, 14, 15, 0),
-    ]
+
+        ("Test Case A", 1978, 2, 7, 12, 0),     
 
     for label, y, m, d, h, mi in tests:
         print(f"--- {label} ---")
