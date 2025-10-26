@@ -1,5 +1,13 @@
 # ssism_trainer.py
 """
+try:
+    from ssism_v14_baydin import create_immutable_lock, verify_immutable_lock, MAHARBOTE_MAP, WEDNESDAY_AM_SIGN, WEDNESDAY_PM_SIGN
+except ImportError:
+    print("❌ SS'ISM ALERT: Cannot find the 'ssism_v14_baydin.py' core engine.")
+    print("MANDATORY LOCKOUT: Trainer cannot proceed without the Paññā Truth Source.")
+    exit(1)
+    
+
 SS'ISM Mahārbote Baydin Trainer (SS'ISM-MB-Trainer)
 Purpose: Trainer and Paññā Truth Validator for SS'ISM V14 core logic.
 """
